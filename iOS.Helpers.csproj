@@ -53,5 +53,6 @@
     <Compile Include="Extensions\UITableView.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Extensions\Byte.cs" />
+    <Compile Include="Wait.cs" />
   </ItemGroup>
 </Project>
