@@ -30,6 +30,17 @@ namespace iOS.Helpers {
 			return UIColor.FromRGBA(red, green, blue, alpha);
 		}
 
+		public static void Round(this UIImageView image, int size) {
+			if (image == null)
+				return;
+
+			var layer = image.Layer;
+			layer.CornerRadius = size;
+			layer.BorderWidth = 0f;
+			layer.BorderColor = UIColor.Clear.CGColor;
+			layer.MasksToBounds = true;
+		}
+
 		public static UIImage Tint(this UIImage img, UIColor tint, CGBlendMode blendMode) {
 			UIGraphics.BeginImageContextWithOptions(img.Size, false, 0f);
 			tint.SetFill();

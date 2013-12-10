@@ -35,6 +35,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -54,5 +55,15 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Extensions\Byte.cs" />
     <Compile Include="Wait.cs" />
+    <Compile Include="ApplicationHelper.cs" />
+    <Compile Include="Extensions\Task.cs" />
+    <Compile Include="Extensions\NSData.cs" />
+    <Compile Include="VersionHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceStack.Text\src\ServiceStack.Text.MonoTouch\ServiceStack.Text.MonoTouch\ServiceStack.Text.MonoTouch.csproj">
+      <Project>{1137B5AC-2259-413C-A473-93721D2A7551}</Project>
+      <Name>ServiceStack.Text.MonoTouch</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
