@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using MonoTouch.Foundation;
 
 namespace iOS.Helpers {
 	public class Wait {
@@ -8,6 +9,7 @@ namespace iOS.Helpers {
 		private volatile bool Continue;
 		private List<Action> Funcs { get; set; }
 		private int Sleep { get; set; }
+		private static NSObject UIThread = new NSObject();
 
 		internal Wait() {
 			Funcs = new List<Action>();
@@ -40,7 +42,7 @@ namespace iOS.Helpers {
 			if (sameThread)
 				act();
 			else
-				new Thread(() => act()).Start();
+				new Thread(() => UIThread.InvokeOnMainThread(() => act())).Start();
 
 			return this;
 		}
