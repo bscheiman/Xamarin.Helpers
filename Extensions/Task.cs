@@ -10,6 +10,10 @@ namespace iOS.Helpers {
 			return task.ContinueWith(t => UIThread.InvokeOnMainThread(() => action(t)), tco);
 		}
 
+		public static Task ContinueOnUIThread(this Task task, Action<Task> action, TaskContinuationOptions tco) {
+			return task.ContinueWith(t => UIThread.InvokeOnMainThread(() => action(t)), tco);
+		}
+
 		public static Task ContinueOnUIThread<T>(this Task<T> task, Action<Task<T>> action) {
 			return task.ContinueWith(t => UIThread.InvokeOnMainThread(() => action(t)));
 		}
