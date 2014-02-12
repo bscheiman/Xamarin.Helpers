@@ -59,6 +59,8 @@
     <Compile Include="Extensions\Task.cs" />
     <Compile Include="Extensions\NSData.cs" />
     <Compile Include="VersionHelper.cs" />
+    <Compile Include="LogEntries.cs" />
+    <Compile Include="Extensions\UIActionSheet.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ServiceStack.Text\src\ServiceStack.Text.MonoTouch\ServiceStack.Text.MonoTouch\ServiceStack.Text.MonoTouch.csproj">

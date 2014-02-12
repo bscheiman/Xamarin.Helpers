@@ -17,11 +17,9 @@ namespace iOS.Helpers {
 			txt.Text = defValue;
 			txt.KeyboardType = type;
 
-			AlertView.Clicked += (sender, e) => {
-				tcs.SetResult(AlertView.GetTextField(0).Text);
-			};
+			AlertView.Clicked += (sender, e) => tcs.SetResult(AlertView.GetTextField(0).Text);
 
-			UIThread.InvokeOnMainThread(() => AlertView.Show());
+			UIThread.InvokeOnMainThread(AlertView.Show);
 
 			return tcs.Task;
 		}
@@ -33,6 +31,24 @@ namespace iOS.Helpers {
 					AlertView.Dispose();
 
 				AlertView = new UIAlertView(title, message, null, button);
+
+				if (yesFunc != null) {
+					AlertView.Clicked += (sender, e) => { 
+						if (e.ButtonIndex == 0)
+							yesFunc(); 
+					};
+				}
+
+				AlertView.Show();
+			});
+		}
+
+		public static void Confirm(string title, string message, string yesButton = "Yes", string noButton = "No", Action yesFunc = null) {
+			UIThread.InvokeOnMainThread(() => {
+				if (AlertView != null)
+					AlertView.Dispose();
+
+				AlertView = new UIAlertView(title, message, null, yesButton, noButton);
 
 				if (yesFunc != null) {
 					AlertView.Clicked += (sender, e) => { 

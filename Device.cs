@@ -10,14 +10,13 @@ namespace iOS.Helpers {
 
 		public static bool IsSeven {
 			get {
-				return Version.Parse(UIDevice.CurrentDevice.SystemVersion).Major >= 7;
+				return UIDevice.CurrentDevice.CheckSystemVersion(7, 0);
 			}
 		}
 
 		public static bool IsTall {
 			get {
-				return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone &&
-				Math.Abs(UIScreen.MainScreen.Bounds.Size.Height - 568) < 0.01;
+				return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone && Math.Abs(UIScreen.MainScreen.Bounds.Size.Height - 568) < 0.01;
 			}
 		}
 

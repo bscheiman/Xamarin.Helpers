@@ -1,16 +1,21 @@
 using System;
 using System.Linq.Expressions;
 using MonoTouch.Foundation;
+using System.Globalization;
 
 namespace iOS.Helpers {
 	public static class Settings {
 		public static T NativeGet<T>(string key) {
-			var value = NSUserDefaults.StandardUserDefaults.StringForKey(key);
+			try {
+				var value = NSUserDefaults.StandardUserDefaults.StringForKey(key);
 
-			if (value != null)
-				return (T)Convert.ChangeType(value, typeof(T));
+				if (value != null)
+					return (T)Convert.ChangeType(value, typeof(T));
 
-			return default(T);
+				return default(T);
+			} catch {
+				return default(T);
+			}
 		}
 
 		public static void NativeSet<T>(string key, T value) {
@@ -30,7 +35,7 @@ namespace iOS.Helpers {
 				return Retrieve(expr);
 			}
 
-			return (T)Convert.ChangeType(value, typeof(T));
+			return (T)Convert.ChangeType(value, typeof(T), CultureInfo.InvariantCulture);
 		}
 
 		public static void Save<T>(Expression<Func<ConfigEntry<T>>> expr, T value) {
@@ -38,6 +43,22 @@ namespace iOS.Helpers {
 			var name = body.Member.Name;
 
 			NSUserDefaults.StandardUserDefaults.SetString(value.ToString(), name);
+			NSUserDefaults.StandardUserDefaults.Synchronize();
+		}
+
+		public static void Save(Expression<Func<ConfigEntry<float>>> expr, float value) {
+			var body = (MemberExpression)expr.Body;
+			var name = body.Member.Name;
+
+			NSUserDefaults.StandardUserDefaults.SetString(value.ToString(CultureInfo.InvariantCulture), name);
+			NSUserDefaults.StandardUserDefaults.Synchronize();
+		}
+
+		public static void Save(Expression<Func<ConfigEntry<double>>> expr, double value) {
+			var body = (MemberExpression)expr.Body;
+			var name = body.Member.Name;
+
+			NSUserDefaults.StandardUserDefaults.SetString(value.ToString(CultureInfo.InvariantCulture), name);
 			NSUserDefaults.StandardUserDefaults.Synchronize();
 		}
 
