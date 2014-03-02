@@ -9,6 +9,13 @@ namespace iOS.Helpers {
 				return def;
 			}
 		}
+		
+		public static void Exception(Action act) {
+			try {
+				act();
+			} catch {
+			}
+		}
 	}
 }
 

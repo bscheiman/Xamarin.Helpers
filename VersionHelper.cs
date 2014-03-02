@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using System.Net;
-using ServiceStack.Text;
-using System.Linq;
+using System.Runtime.Serialization;
 using MonoTouch.Foundation;
+using ServiceStack.Text;
 
 namespace iOS.Helpers {
 	public static class VersionHelper {
@@ -13,7 +12,7 @@ namespace iOS.Helpers {
 				using (var wc = new WebClient()) {
 					var obj = wc.DownloadString(string.Format("http://itunes.apple.com/lookup?id={0}", appId)).FromJson<iTunesResponse>();
 					var currVersion = Version.Parse(NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleVersion").ToString());
-					var newVersion = Version.Parse(obj.Results.First().Version);
+					var newVersion = Version.Parse(obj.Results[0].Version);
 
 					return newVersion.CompareTo(currVersion) > 0;
 				}

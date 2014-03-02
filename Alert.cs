@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace iOS.Helpers {
 	public static class Alert {
-		static NSObject UIThread = new NSObject();
+		static readonly NSObject UIThread = new NSObject();
 		private static UIAlertView AlertView { get; set; }
 
 		public static Task<string> Input(string title, string message, string button = "Ok", UIKeyboardType type = UIKeyboardType.ASCIICapable, string defValue = "") {
@@ -43,19 +43,19 @@ namespace iOS.Helpers {
 			});
 		}
 
-		public static void Confirm(string title, string message, string yesButton = "Yes", string noButton = "No", Action yesFunc = null) {
+		public static void Confirm(string title, string message, string yesButton = "Yes", string noButton = "No", Action yesFunc = null, Action noFunc = null) {
 			UIThread.InvokeOnMainThread(() => {
 				if (AlertView != null)
 					AlertView.Dispose();
 
 				AlertView = new UIAlertView(title, message, null, yesButton, noButton);
 
-				if (yesFunc != null) {
-					AlertView.Clicked += (sender, e) => { 
-						if (e.ButtonIndex == 0)
-							yesFunc(); 
-					};
-				}
+				AlertView.Clicked += (sender, e) => { 
+					if (e.ButtonIndex == 0 && yesFunc != null)
+						yesFunc(); 
+					else if (e.ButtonIndex == 1 && noFunc != null)
+						noFunc(); 
+				};
 
 				AlertView.Show();
 			});

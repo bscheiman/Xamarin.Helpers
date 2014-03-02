@@ -55,7 +55,7 @@ namespace iOS.Helpers {
 
 			var finalStr = string.Format(str, obj);
 
-			LogQueue.Add(finalStr);
+			LogQueue.Add(finalStr.Replace("\n", "\n" + TokenKey));
 		}
 
 		public static void Send(object obj) {

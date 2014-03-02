@@ -36,6 +36,9 @@
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="ServiceStack.Text.MonoTouch">
+      <HintPath>..\Third parties\ServiceStack.Text.MonoTouch.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -61,11 +64,8 @@
     <Compile Include="VersionHelper.cs" />
     <Compile Include="LogEntries.cs" />
     <Compile Include="Extensions\UIActionSheet.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ServiceStack.Text\src\ServiceStack.Text.MonoTouch\ServiceStack.Text.MonoTouch\ServiceStack.Text.MonoTouch.csproj">
-      <Project>{1137B5AC-2259-413C-A473-93721D2A7551}</Project>
-      <Name>ServiceStack.Text.MonoTouch</Name>
-    </ProjectReference>
+    <Compile Include="CustomException.cs" />
+    <Compile Include="App.cs" />
+    <Compile Include="Extensions\DateTime.cs" />
   </ItemGroup>
 </Project>
