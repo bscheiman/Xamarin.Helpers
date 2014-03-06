@@ -58,6 +58,13 @@ namespace iOS.Helpers {
 			LogQueue.Add(finalStr.Replace("\n", "\n" + TokenKey));
 		}
 
+		public static void Send(string str) {
+			if (string.IsNullOrEmpty(TokenKey))
+				throw new ArgumentException("Please call Init() first.");
+
+			LogQueue.Add(str.Replace("\n", "\n" + TokenKey));
+		}
+
 		public static void Send(object obj) {
 			Send(obj.ToString());
 		}
