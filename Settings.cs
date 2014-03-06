@@ -3,16 +3,13 @@ using System.Linq.Expressions;
 using MonoTouch.Foundation;
 using System.Globalization;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public static class Settings {
 		public static T NativeGet<T>(string key) {
 			try {
 				var value = NSUserDefaults.StandardUserDefaults.StringForKey(key);
 
-				if (value != null)
-					return (T)Convert.ChangeType(value, typeof(T));
-
-				return default(T);
+				return value != null ? (T)Convert.ChangeType(value, typeof(T)) : default(T);
 			} catch {
 				return default(T);
 			}

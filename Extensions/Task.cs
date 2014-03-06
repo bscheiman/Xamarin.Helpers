@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using MonoTouch.Foundation;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public static partial class Extensions {
 		static readonly NSObject UIThread = new NSObject();
 		public static Action<Exception> LogFunction { get; set; }

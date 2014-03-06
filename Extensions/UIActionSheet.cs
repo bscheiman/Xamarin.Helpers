@@ -1,6 +1,6 @@
 using MonoTouch.UIKit;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public static partial class Extensions {
 		public static UIActionSheet Tint(this UIActionSheet sheet, UIColor color) {
 			sheet.WillPresent += (sender, e) => {

@@ -1,14 +1,13 @@
 using System;
-using System.Net;
 using System.Collections.Concurrent;
 using System.Threading;
 using System.IO;
 using System.Net.Sockets;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public static class LogEntries {
-		private static string TokenKey { get; set; }
-		private static BlockingCollection<string> LogQueue { get; set; }
+		static string TokenKey { get; set; }
+		static BlockingCollection<string> LogQueue { get; set; }
 
 		public static void Init(string tokenKey) {
 			TokenKey = tokenKey;
@@ -17,7 +16,7 @@ namespace iOS.Helpers {
 			new Thread(SendLogic).Start();
 		}
 
-		private	static string DeviceName {
+		static string DeviceName {
 			get {
 				#if ANDROID
 				return string.Format("{0} ({1})", Build.Model, Build.Serial);
@@ -27,7 +26,7 @@ namespace iOS.Helpers {
 			}
 		}
 
-		private static void SendLogic() {
+		static void SendLogic() {
 			try {
 				using (var client = new TcpClient("data.logentries.com", 80)) {
 					client.NoDelay = true;

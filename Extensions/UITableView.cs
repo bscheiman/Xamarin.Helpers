@@ -1,8 +1,7 @@
-using System;
 using MonoTouch.UIKit;
 using System.Drawing;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public static partial class Extensions {
 		public static void Reload(this UITableView table) {
 			table.ReloadData();

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public static partial class Extensions {
 		public static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 

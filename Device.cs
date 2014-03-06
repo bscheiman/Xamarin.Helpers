@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using MonoTouch.UIKit;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public static class Device {
 		public static bool IsIPad { get; private set; }
 

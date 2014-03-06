@@ -1,7 +1,7 @@
 using System;
 using MonoTouch.Foundation;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public static class App {
 		public static string FullVersion {
 			get {

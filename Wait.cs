@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Threading;
 using MonoTouch.Foundation;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public class Wait {
-		private readonly object LockObj = new object();
-		private volatile bool Continue;
-		private List<Action> Funcs { get; set; }
-		private int Sleep { get; set; }
-		private static NSObject UIThread = new NSObject();
+		readonly object LockObj = new object();
+		volatile bool Continue;
+		List<Action> Funcs { get; set; }
+		int Sleep { get; set; }
+		static readonly NSObject UIThread = new NSObject();
 
 		internal Wait() {
 			Funcs = new List<Action>();

@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using MonoTouch.Foundation;
 using ServiceStack.Text;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public static class VersionHelper {
 		public static bool IsNewVersionAvailable(string appId) {
 			try {

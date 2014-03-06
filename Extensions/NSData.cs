@@ -1,8 +1,7 @@
-using System;
 using MonoTouch.Foundation;
 using System.Linq;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public static partial class Extensions {
 		public static string ToHexString(this NSData data) {
 			byte[] token = data.ToArray();

@@ -8,7 +8,7 @@
     <ProjectGuid>{7B23F326-842F-4C93-9BA4-B76CB0160762}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>iOS.Helpers</RootNamespace>
+    <RootNamespace>Xamarin.Helpers</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>iOS.Helpers</AssemblyName>
   </PropertyGroup>

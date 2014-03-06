@@ -1,7 +1,7 @@
 using System;
 using MonoTouch.UIKit;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public static partial class Extensions {
 		public static UITextField AfterReturnSelect(this UITextField orig, UITextField dest) {
 			orig.ShouldReturn = delegate {
@@ -15,7 +15,7 @@ namespace iOS.Helpers {
 		}
 
 		public static void AfterReturnExecute(this UITextField orig, Action act) {
-			orig.ShouldReturn = delegate(UITextField textField) {
+			orig.ShouldReturn = delegate {
 				orig.ResignFirstResponder();
 
 				if (act != null)

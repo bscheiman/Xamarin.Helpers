@@ -1,6 +1,6 @@
 using System;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public static class Ignore {
 		public static T Exception<T>(Func<T> act, T def) {
 			try {

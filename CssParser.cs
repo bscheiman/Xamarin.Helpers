@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public static class CssParser {
 		internal static Dictionary<string, Dictionary<string, string>> CssQueries { get; set; }
 

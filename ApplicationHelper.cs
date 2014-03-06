@@ -2,9 +2,9 @@ using System;
 using MonoTouch.UIKit;
 using MonoTouch.Foundation;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public static class ApplicationHelper {
-		static NSObject UIThread = new NSObject();
+		static readonly NSObject UIThread = new NSObject();
 
 		public static void ResetNotifications(bool cancel = false) {
 			UIApplication.SharedApplication.ApplicationIconBadgeNumber = 1;

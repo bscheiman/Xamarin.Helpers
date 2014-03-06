@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace iOS.Helpers {
+namespace Xamarin.Helpers {
 	public class CustomException<T> : Exception where T : new() {
 		public T CustomData { get; set; }
 
