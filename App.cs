@@ -1,4 +1,6 @@
 using System;
+
+#if IPHONE
 using MonoTouch.Foundation;
 
 namespace Xamarin.Helpers {
@@ -13,3 +15,5 @@ namespace Xamarin.Helpers {
 		}
 	}
 }
+#else
+#endif

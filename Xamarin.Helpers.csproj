@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Xamarin.Helpers</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>iOS.Helpers</AssemblyName>
+    <AssemblyName>Xamarin.Helpers</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

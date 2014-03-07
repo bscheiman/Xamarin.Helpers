@@ -4,6 +4,11 @@ using System.Threading;
 using System.IO;
 using System.Net.Sockets;
 
+#if IPHONE
+#else
+using Android.OS;
+#endif
+
 namespace Xamarin.Helpers {
 	public static class LogEntries {
 		static string TokenKey { get; set; }
@@ -18,10 +23,10 @@ namespace Xamarin.Helpers {
 
 		static string DeviceName {
 			get {
-				#if ANDROID
-				return string.Format("{0} ({1})", Build.Model, Build.Serial);
-				#else
+				#if IPHONE
 				return MonoTouch.UIKit.UIDevice.CurrentDevice.Name;
+				#else
+				return string.Format("{0} ({1})", Build.Model, Build.Serial);
 				#endif
 			}
 		}

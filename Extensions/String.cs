@@ -1,7 +1,9 @@
 using System;
-using MonoTouch.UIKit;
 using System.Security.Cryptography;
 using System.Text;
+#if IPHONE
+using MonoTouch.UIKit;
+#endif
 
 namespace Xamarin.Helpers {
 	public static partial class Extensions {
@@ -15,6 +17,7 @@ namespace Xamarin.Helpers {
 				return hash.ComputeHash(Encoding.UTF8.GetBytes(str)).HexString();
 		}
 
+		#if IPHONE
 		public static UIColor AsColor(this string hex) {
 			if (string.IsNullOrEmpty(hex))
 				hex = "000000";
@@ -45,6 +48,7 @@ namespace Xamarin.Helpers {
 
 			return null; // TODO
 		}
+		#endif
 	}
 }
 

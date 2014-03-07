@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+#if IPHONE
 using MonoTouch.Foundation;
+#else
+using Android.App;
+#endif
 
 namespace Xamarin.Helpers {
 	public class Wait {
@@ -9,7 +13,12 @@ namespace Xamarin.Helpers {
 		volatile bool Continue;
 		List<Action> Funcs { get; set; }
 		int Sleep { get; set; }
+
+		#if IPHONE
 		static readonly NSObject UIThread = new NSObject();
+		#else
+		public static Activity UIThread { get; set; }
+		#endif
 
 		internal Wait() {
 			Funcs = new List<Action>();
