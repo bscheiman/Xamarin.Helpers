@@ -67,5 +67,7 @@
     <Compile Include="CustomException.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Extensions\DateTime.cs" />
+    <Compile Include="Extensions\TaskFactory.cs" />
+    <Compile Include="Extensions\From.cs" />
   </ItemGroup>
 </Project>

@@ -17,7 +17,7 @@ namespace Xamarin.Helpers {
 				return hash.ComputeHash(Encoding.UTF8.GetBytes(str)).HexString();
 		}
 
-		#if IPHONE
+#if IPHONE
 		public static UIColor AsColor(this string hex) {
 			if (string.IsNullOrEmpty(hex))
 				hex = "000000";
@@ -39,8 +39,12 @@ namespace Xamarin.Helpers {
 			float green = ((number >> 16) & 0xFF) / 255f;
 			float blue = ((number >> 8) & 0xFF) / 255f;
 			float alpha = ((number >> 0) & 0xFF) / 255f;
+			var color = UIColor.FromRGBA(red, green, blue, alpha);
 
-			return UIColor.FromRGBA(red, green, blue, alpha);
+			//Console.WriteLine(new System.Diagnostics.StackTrace().GetFrames()[1]);
+			//Console.WriteLine("Color: {0} -> {1}", hex, color);
+
+			return color;
 		}
 
 		public static UIImage AsImage(this string hex) {
@@ -48,7 +52,7 @@ namespace Xamarin.Helpers {
 
 			return null; // TODO
 		}
-		#endif
+#endif
 	}
 }
 

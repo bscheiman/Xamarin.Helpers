@@ -5,22 +5,43 @@ using MonoTouch.UIKit;
 using System.Threading.Tasks;
 
 namespace Xamarin.Helpers {
+	public static class Sheet {
+		static readonly NSObject UIThread = new NSObject();
+
+		public static Task<int> Show(UIView view, string title, string cancel, string destroy, string[] options) {
+			var tcs = new TaskCompletionSource<int>();
+			var sheet = new UIActionSheet(title, null, cancel, destroy, options);
+
+			sheet.Clicked += (sender, e) => {
+				if (e.ButtonIndex == sheet.CancelButtonIndex)
+					tcs.SetResult(-1);
+				else if (e.ButtonIndex == sheet.DestructiveButtonIndex)
+					tcs.SetResult(-2);
+				else
+					tcs.SetResult(e.ButtonIndex - 1);
+			};
+
+			UIThread.InvokeOnMainThread(() => sheet.ShowInView(view));
+			return tcs.Task;
+		}
+	}
+
 	public static class Alert {
 		static readonly NSObject UIThread = new NSObject();
 		static UIAlertView AlertView { get; set; }
 
 		public static Task<string> Input(string title, string message, string button = "Ok", UIKeyboardType type = UIKeyboardType.ASCIICapable, string defValue = "") {
 			var tcs = new TaskCompletionSource<string>();
-			AlertView = new UIAlertView(title, message, null, button, null);
-			AlertView.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+			var alert = new UIAlertView(title, message, null, button, null);
+			alert.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
 
-			var txt = AlertView.GetTextField(0);
+			var txt = alert.GetTextField(0);
 			txt.Text = defValue;
 			txt.KeyboardType = type;
 
-			AlertView.Clicked += (sender, e) => tcs.SetResult(AlertView.GetTextField(0).Text);
+			alert.Clicked += (sender, e) => tcs.SetResult(alert.GetTextField(0).Text);
 
-			UIThread.InvokeOnMainThread(AlertView.Show);
+			UIThread.InvokeOnMainThread(alert.Show);
 
 			return tcs.Task;
 		}
@@ -28,19 +49,16 @@ namespace Xamarin.Helpers {
 
 		public static void Show(string title, string message, string button = "Ok", Action yesFunc = null) {
 			UIThread.InvokeOnMainThread(() => {
-				if (AlertView != null)
-					AlertView.Dispose();
-
-				AlertView = new UIAlertView(title, message, null, button);
+				var alert = new UIAlertView(title, message, null, button);
 
 				if (yesFunc != null) {
-					AlertView.Clicked += (sender, e) => { 
+					alert.Clicked += (sender, e) => { 
 						if (e.ButtonIndex == 0)
 							yesFunc(); 
 					};
 				}
 
-				AlertView.Show();
+				alert.Show();
 			});
 		}
 

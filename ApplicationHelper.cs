@@ -4,8 +4,6 @@ using MonoTouch.Foundation;
 
 namespace Xamarin.Helpers {
 	public static class ApplicationHelper {
-		static readonly NSObject UIThread = new NSObject();
-
 		public static void ResetNotifications(bool cancel = false) {
 			UIApplication.SharedApplication.ApplicationIconBadgeNumber = 1;
 			UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
