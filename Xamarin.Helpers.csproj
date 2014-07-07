@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7B23F326-842F-4C93-9BA4-B76CB0160762}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -39,6 +37,7 @@
     <Reference Include="ServiceStack.Text.MonoTouch">
       <HintPath>..\Third parties\ServiceStack.Text.MonoTouch.dll</HintPath>
     </Reference>
+    <Reference Include="MonoTouch.Dialog-1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -69,5 +68,7 @@
     <Compile Include="Extensions\DateTime.cs" />
     <Compile Include="Extensions\TaskFactory.cs" />
     <Compile Include="Extensions\From.cs" />
+    <Compile Include="Sheet.cs" />
+    <Compile Include="ParseHelper.cs" />
   </ItemGroup>
 </Project>
