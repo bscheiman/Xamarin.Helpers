@@ -100,6 +100,14 @@ namespace Xamarin.Helpers {
 			return ret;
 		}
 
+		public static string GetSoftwareVersion() {
+#if __IOS__
+			var dev = MonoTouch.UIKit.UIDevice.CurrentDevice;
+			return string.Format("{0} {1}", dev.SystemName, dev.SystemVersion);
+#else
+#endif
+		}
+
 		[DllImport(MonoTouch.Constants.SystemLibrary)]
 		internal static extern int sysctlbyname([MarshalAs(UnmanagedType.LPStr)] string property, IntPtr output, IntPtr oldLen, IntPtr newp,
 		                                        uint newlen);

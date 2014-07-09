@@ -1,7 +1,7 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
-#if IPHONE
+#if __IOS__
 using MonoTouch.UIKit;
 #endif
 
@@ -17,7 +17,7 @@ namespace Xamarin.Helpers {
 				return hash.ComputeHash(Encoding.UTF8.GetBytes(str)).HexString();
 		}
 
-#if IPHONE
+#if __IOS__
 		public static UIColor AsColor(this string hex) {
 			if (string.IsNullOrEmpty(hex))
 				hex = "000000";
