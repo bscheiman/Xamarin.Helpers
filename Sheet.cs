@@ -1,4 +1,4 @@
-#if IPHONE
+#if __IOS__
 using System;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;

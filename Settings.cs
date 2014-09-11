@@ -1,4 +1,4 @@
-#if IPHONE
+#if __IOS__
 using System;
 using System.Linq.Expressions;
 using MonoTouch.Foundation;
@@ -79,7 +79,7 @@ namespace Xamarin.Helpers {
 		public T Default { get; set; }
 	}
 }
-#else
+#elif __ANDROID__
 using System;
 using System.Linq.Expressions;
 using Android.Preferences;

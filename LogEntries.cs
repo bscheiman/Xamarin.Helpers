@@ -4,8 +4,8 @@ using System.Threading;
 using System.IO;
 using System.Net.Sockets;
 
-#if IPHONE
-#else
+#if __IOS__
+#elif __ANDROID__
 using Android.OS;
 #endif
 
@@ -23,9 +23,9 @@ namespace Xamarin.Helpers {
 
 		static string DeviceName {
 			get {
-				#if IPHONE
+				#if __IOS__
 				return MonoTouch.UIKit.UIDevice.CurrentDevice.Name;
-				#else
+				#elif __ANDROID__
 				return string.Format("{0} ({1})", Build.Model, Build.Serial);
 				#endif
 			}

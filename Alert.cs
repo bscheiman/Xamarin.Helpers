@@ -1,4 +1,4 @@
-#if IPHONE
+#if __IOS__
 using System;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
@@ -60,7 +60,7 @@ namespace Xamarin.Helpers {
 		}
 	}
 }
-#else
+#elif __ANDROID__
 using System;
 using Android.Widget;
 using System.Threading.Tasks;

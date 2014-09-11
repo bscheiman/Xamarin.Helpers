@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-#if IPHONE
+#if __IOS__
 using MonoTouch.Foundation;
-#else
+#elif __ANDROID__
 using Android.App;
 #endif
 
@@ -14,9 +14,9 @@ namespace Xamarin.Helpers {
 		List<Action> Funcs { get; set; }
 		int Sleep { get; set; }
 
-		#if IPHONE
+		#if __IOS__
 		static readonly NSObject UIThread = new NSObject();
-		#else
+		#elif __ANDROID__
 		public static Activity UIThread { get; set; }
 		#endif
 
