@@ -35,6 +35,12 @@ namespace Xamarin.Helpers {
 			}
 		}
 
+		public static bool IsEight {
+			get {
+				return UIDevice.CurrentDevice.CheckSystemVersion(8, 0);
+			}
+		}
+
 		public static bool IsTall {
 			get {
 				return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone && Math.Abs(UIScreen.MainScreen.Bounds.Size.Height - 568) < 0.01;
